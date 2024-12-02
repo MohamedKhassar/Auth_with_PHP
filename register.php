@@ -7,12 +7,8 @@ if(isset($_SESSION['user'])){
     header("Location: dashboard.php");
 }
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-require "vendor/autoload.php";
-use Dotenv\Dotenv;
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+
 function send_mail($to,$name,$verifying_token)
 {
     $mail = new PHPMailer(true);
@@ -67,7 +63,7 @@ if (isset($_POST['register'])) {
             $err_pass = "Passwords do not match";
         }
     } catch (mysqli_sql_exception $e) {
-        $error = "Connection failed: " . $e->getMessage();
+        $error = "something's wrong: " . $e->getMessage();
     }
 }
 
