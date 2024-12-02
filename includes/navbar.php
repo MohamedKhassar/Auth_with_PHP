@@ -1,3 +1,7 @@
+<?php 
+include "./includes/connect_db.php";
+
+?>
 <div class="bg-dark p-3">
     <div class="container">
         <div class="row">
@@ -12,16 +16,21 @@
                             <ul class="navbar-nav mb-2 ms-auto mb-lg-0 fs-5">
                                 <li class="nav-item">
                                     <a class="nav-link active" href="index.php">Home</a>
-                                </li>
+                                    </li>
+                                <?php 
+                                if(!empty($_SESSION['user'])):
+                                ?>
                                 <li class="nav-item">
                                     <a class="nav-link" href="dashboard.php">Dashboard</a>
                                 </li>
+                                <?php else:  ?>
                                 <li class="nav-item">
                                     <a class="nav-link" href="register.php">Register</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="login.php">Login</a>
                                 </li>
+                                <?php endif  ?>
                             </ul>
                         </div>
                     </div>
